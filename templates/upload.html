@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+
+<body style="background: #000000;border-style: none;">
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" style="opacity: 1;background: rgb(7,7,7);max-height: 10%;height: 70%;width: 100%;border-color: #222222;border-top-style: none;border-right-style: none;border-bottom: 1px solid var(--blue) ;border-left-style: none;">
+        <div class="container-fluid"><a class="navbar-brand" data-bss-hover-animate="flash" href="#" style="color: #1fbaf7;font-size: 25px;">CXRDiagnosis</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="color: var(--light);"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon" style="background: rgba(238,238,238,0);border-left-color: var(--light);color: var(--light);"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <!-- <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#" style="color: #8f8f8f;">First Item</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: #8f8f8f;">Second Item</a></li>
+                </ul><span class="navbar-text actions"> <a class="login" href="#" style="color: #8f8f8f;">Log In</a></span> -->
+            </div>
+        </div>
+    </nav>
+    <header aign='center' data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" id = 'asset3'>
+        <form align='center' action="{{ url_for('testImage') }}" class="form-group" onsubmit="return verify(event)" method="POST" enctype="multipart/form-data" data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" style="width: 50%;height: 30%;margin-left: 25%;background: #000000;opacity: 0.83;padding: 2%;padding-top: %;border: 0px none var(--blue);" method="get">
+            <div align='center'>
+                <input class="btn btn-primary" name="file" onchange="readURL(this);" type="file" style="color: aqua; margin-bottom: 20px;" accept="image/*" required="">
+                <div class="image-section">
+                    <img id="uploadedImage" src="#" alt="Your image" />
+                </div>
+                <input id = "diseasesSelected" name="diseasesSelected" type="hidden"/>
+            </div>
+            <div align='center' style="padding: 2%;">
+                <button id = 'predictbtn' class="btn btn-primary" data-bss-hover-animate="pulse" type="submit">G E N E R A T E &nbsp;&nbsp; R E P O R T</button>
+            </div>
+        </form>
+    </header>
+    <section data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" style="height: 550px; background: #000000;">
+        <section data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" class="features-boxed" id = 'asset4'>
+            <div class="container">
+                <div class="intro"></div>
+                <div class="row justify-content-center features">
+                    <div class="col-sm-6 col-md-5 col-lg-4 item">
+                        <div data-bss-hover-animate="pulse" class="box" style="background: rgb(0,0,0);opacity: 0.86;border: 1px solid var(--blue);">
+                            <h3 class="name" style="color: var(--white);">COVID-19</h3><button id="Covid19" class="btn btn-primary diseaseButton" data-bss-hover-animate="pulse" type="submit" style="margin-top: 10%;">SELECT</button>
+                            <p class="description"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-5 col-lg-4 item">
+                        <div data-bss-hover-animate="pulse" class="box" style="background: rgb(0,0,0);opacity: 0.87;border: 1px solid var(--blue);">
+                            <h3 class="name" style="color: var(--white);">Pneumonia</h3><button id="Pneumonia" class="btn btn-primary diseaseButton" data-bss-hover-animate="pulse" type="submit" style="margin-top: 10%;margin-bottom: 8%;border: 1px solid var(--blue);">SELECT</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-5 col-lg-4 item">
+                        <div data-bss-hover-animate="pulse" class="box" style="background: #000000;opacity: 0.89;border: 1px solid var(--blue);">
+                            <h3 class="name" style="color: var(--white);"><strong>Effusion</strong><br></h3><button id="Effusion" class="btn btn-primary diseaseButton" data-bss-hover-animate="pulse" type="submit" style="margin-top: 10%;margin-bottom: 8%;">SELECT</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-5 col-lg-4 item">
+                        <div data-bss-hover-animate="pulse" class="box" style="background: #000000;opacity: 0.86;border: 1px solid var(--blue);">
+                            <h3 class="name" style="color: var(--white);">Atelectasis<br></h3><button id="Atelectasis" class="btn btn-primary diseaseButton" type="submit" style="margin-top: 10%;margin-bottom: 8%;">SELECT</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-5 col-lg-4 item">
+                        <div data-bss-hover-animate="pulse" class="box" style="background: #000000;opacity: 0.86;border: 1px solid var(--blue);">
+                            <h3 class="name" style="color: var(--white);">Mass<br></h3><button id="Mass" class="btn btn-primary diseaseButton" data-bss-hover-animate="pulse" type="submit" style="margin-top: 10%;margin-bottom: 8%;">SELECT</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-5 col-lg-4 item">
+                        <div data-bss-hover-animate="pulse" class="box" style="background: #000000;opacity: 0.86;border: 1px solid var(--blue);">
+                            <h3 class="name" style="color: var(--white);">Pneumothorax<br></h3><button id="Pneumothorax" class="btn btn-primary diseaseButton" data-bss-hover-animate="pulse" type="submit" style="margin-top: 10%;margin-bottom: 8%;">SELECT</button>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-6 col-md-5 col-lg-4 item">
+                        <div data-bss-hover-animate="pulse" class="box" style="background: #000000;opacity: 0.87;margin-bottom: 8%;border: 1px solid var(--blue);">
+                            <h3 class="name" style="color: var(--white);">Nodule<br></h3><button id="Nodule" class="btn btn-primary diseaseButton" data-bss-hover-animate="pulse" type="submit" style="margin-top: 10%;margin-bottom: 8%;">SELECT</button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+    </section>
+    <footer data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" class="footer-dark" style="background: linear-gradient(black 44%, #505e6c 100%), #000000;border: 1px solid var(--blue);opacity: 0.66;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>We Work On</h3>
+                    <ul>
+                        <li><a href="#">Web design</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">AI/ML</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Team Members</h3>
+                    <ul>
+                        <li><a href="#">Anant Sutar</a></li>
+                        <li><a href="#">Shravani Nimbolkar</a></li>
+                        <li><a href="#">Subhradeep Mitra</a></li>
+                        <li><a href="#">Omkar Biranje</a></li>                        
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>CXRDiagnosis</h3>
+                    </div>
+                <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+            </div>
+            <p class="copyright" style="color: var(--white);opacity: 0.95;"><strong>CXRDiagnosis&nbsp;</strong>© 2021</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.min.js') }}"></script>
+    <script>
+        AOS.init();
+        $('.image-section').hide();
+        $('#predictbtn').hide();
+        console.log("inside script")
+        function readURL(input) {
+            $('.image-section').show();
+            $('#predictbtn').show();
+        
+            console.log("inside ReadURL");
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+        
+                reader.onload = function (e) {
+                    $('#uploadedImage')
+                        .attr('src', e.target.result)
+                        .width(250)
+                        .height(250);
+                };
+        
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        
+        let selectedDiseases = new Map()
+        selectedDiseases.set("Atelectasis", false);
+        selectedDiseases.set("Consolidation", false);
+        selectedDiseases.set("Infiltration", false);
+        selectedDiseases.set("Pneumothorax", false);
+        selectedDiseases.set("Edema", false);
+        selectedDiseases.set("Emphysema", false);
+        selectedDiseases.set("Fibrosis", false);
+        selectedDiseases.set("Effusion", false);
+        selectedDiseases.set("Pneumonia", false);
+        selectedDiseases.set("Pleural_thickening", false);
+        selectedDiseases.set("Cardiomegaly", false);
+        selectedDiseases.set("Nodule Mass", false);
+        selectedDiseases.set("Hernia", false);
+
+        let listDiseases = "";
+        let countOfSelectedDiseases = 0;
+        let diseases = document.getElementsByClassName("diseaseButton");
+        Array.from(diseases).forEach(function(ele) {
+            ele.addEventListener('click', addDisease, false);
+        });
+
+        function verify(evt){
+            if(countOfSelectedDiseases > 0)
+            {
+                setDiseases();
+                document.getElementById("diseasesSelected").value = listDiseases;
+                console.log("selected diseases for testing: " + listDiseases);
+                alert("selected diseases for testing: " + listDiseases);
+                return true;
+            }
+            else
+                alert('Please select atleast 1 disease.');
+            return false;
+        }
+
+        function setDiseases(){
+            selectedDiseases.forEach((value, key) => {
+                if(value === true)
+                {
+                    listDiseases += key;
+                    listDiseases += ",";
+                }
+            });
+        }
+
+        function addDisease(id){
+            console.log('Inside this f')
+            let diseaseName = this.id;
+            selectedDiseases.set(diseaseName, true);
+            countOfSelectedDiseases++;
+            alert("selected disease " + diseaseName);
+            console.log(selectedDiseases);
+        }
+    </script>
+</body>
+
+</html>

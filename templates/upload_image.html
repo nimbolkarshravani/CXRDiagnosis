@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <title>Document</title>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='js/upload_image.js') }}"></script>
+        <!-- <script src="../static/js/upload_image.js"></script> -->
+        <!-- <link rel="stylesheet" href="../static/css/upload_image.css"> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/upload_image.css') }}">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mx-auto order-0">
+                <a class="navbar-brand mx-auto" href="#"><h3>Auto-Diagnosis</h3></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('registration') }}">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Website Name</a>
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sign In</a>
+                </li>
+            </ul>
+        </nav> -->
+        <div class="row" style="background-color: antiquewhite; margin: 2px; padding: 40px;">
+            <div class="col-4">
+                <form action="{{ url_for('testImage') }}" class="form-group" method="POST" enctype="multipart/form-data">
+                    <div>
+                        Select image to upload:
+                        <br/>
+                        <input type="file" name="file" onchange="readURL(this);"/>                
+                        <br/>
+                    </div>
+                    <div class="image-section">
+                        <div class="imagePreview">
+                            <img id="uploadedImage" src="#" alt="Your image" />
+                        </div>
+                    </div>
+                    <button id="predictbtn" type="submit" name="submit">Predict</button>
+                </form>
+            </div>
+            <div class="col-8">
+                {{ prediction_text }}
+            </div>
+        </div>
+    </body>
+</html>

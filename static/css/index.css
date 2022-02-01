@@ -1,0 +1,22 @@
+body {
+    background-image: url('img4.jpg');
+    background-size: auto;
+}
+
+
+/* Style the navbar */
+
+
+/* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
+
+.card-deck{
+  padding-top: 1%;
+}
+.card-deck .card {
+ border: 2px cyan;
+  padding-top: 5px;
+ /* padding-left: 0.05px;
+  padding-right: 0.05px;
+  padding-bottom: 0.05px; */
+  background-color: rgb(11, 240, 248);
+}

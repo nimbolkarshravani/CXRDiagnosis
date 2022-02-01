@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href="{{ url_for('static', filename='css/registration.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#"><h3>Auto-Diagnosis</h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('registration') }}">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div style="padding: 10px;">
+        <form method="get" action="{{ url_for('upload_image') }}">
+            <fieldset>
+                <legend>S I G N &nbsp; U P</legend>
+
+                <label>
+                    First name<br>
+                    <input type="text" placeholder="Enter First Name" required/>
+                    <br>
+                </label>
+
+                <label>
+                    Last Name<br>
+                    <input type="text" placeholder="Enter Last Name" required/>
+                    <br>
+                </label>
+
+                <label>
+                    Mobile Number<br>
+                    <input type="number" placeholder="Enter Mobile Number" maxlength="10" required/>
+                    <br>
+                </label>
+
+                <label>
+                    Email Id<br>
+                    <input type="email" placeholder="abcd@example.com" required/>
+                    <br>
+                </label>
+
+                <label>
+                    Password<br>
+                    <input type="password" id = 'p1' placeholder="Enter Password" required/>
+                    <br>
+                </label>
+
+                <label>
+                    Confirm Password<br>
+                    <input type="password" id = 'p2' placeholder="Confirm Password" onkeyup="check()" required/>
+                    <span id = 'pMatching'></span><br>
+                    <br>
+                </label>
+                <input type="submit" id="submitForm" value="S U B M I T" disabled='true'/>
+            </fieldset>
+        </form>
+    </div>
+    <script>
+
+        function check(){
+            if(document.getElementById('p1').value == document.getElementById('p2').value)
+            {
+                document.getElementById('pMatching').innerHTML = 'Matching';
+                document.getElementById('pMatching').style.color = 'green';
+                document.getElementById("submitForm").disabled = false;
+            }
+            else
+            {
+                document.getElementById('pMatching').innerHTML = 'Not Matching';
+                document.getElementById('pMatching').style.color = 'red';
+                document.getElementById("submitForm").disabled = true;
+            }
+        }
+    </script>
+</body>
+</html>

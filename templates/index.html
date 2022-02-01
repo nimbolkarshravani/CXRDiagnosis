@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CXR-Diagnosis</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename='css/styles.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+</head>
+
+<body style="background: #000000;border-bottom-color: rgb(33, 37, 41);opacity: 0.84;color: rgb(0,0,0);">
+    <div class="card" style="opacity: 1;">
+        <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" style="opacity: 1;background: rgb(7,7,7);max-height: 10%;height: 10%;border-color: #222222;border-top-style: none;border-right-style: none;border-bottom: 1px solid var(--blue) ;border-left-style: none;">
+            <div class="container"><a class="navbar-brand" data-bss-hover-animate="flash" href="#" style="color: #1fbaf7;font-size: 25px;">CXRDiagnosis</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="color: var(--light);"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon" style="background: rgba(238,238,238,0);border-left-color: var(--light);color: var(--light);"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#about" style="color: #8f8f8f;">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#LungDisease" style="color: #8f8f8f;">Lung Diseases</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <header id = 'asset1'>
+        <section class="d-inline-flex justify-content-center align-items-center register-photo" data-aos="fade-up" data-aos-duration="900" data-aos-delay="50" style="background: rgb(6,6,6);height: 40%;width: 60%;max-height: 500%;padding-right: 0%;padding-bottom: 2%;margin-top: 15%;margin-bottom: 10%;margin-left: 20%;padding-top: 1%;opacity: 0.88;border: 1px solid var(--blue) ;">
+            <div class="form-container" style="/*top: %;*/margin-top: 5%;">
+                <form data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" method="post" style="background: #000000;border-left-color: #505e6c;opacity: 0.78;border-top-right-radius: 5%;border-bottom-right-radius: 5%;max-width: 50%;width: 45%;padding-left: -3%;">
+                    <p style="text-align: center;color: #dddddd;font-size: 20px;">What you can infer from single Chest X-ray image?<br><br>Maybe our Neural network can answer..&nbsp;</p>
+                    <div class="form-group"><a class="btn btn-primary active btn-block d-md-flex justify-content-md-center" role="button" data-bss-hover-animate="pulse" href="{{  url_for('upload') }}" style="background: var(--blue);opacity: 0.91;height: 40%;width: 50%;margin-left: 22%;">Try now!</a></div>
+                </form>
+            </div>
+        </section>
+    </header>
+    <section id="LungDiseases" style="width: 100%;background: #000000;height: 1000px;max-height: 1000px;">
+        <section data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" class="features-blue" style="background: rgb(0,0,0);border: 1px solid var(--blue) ;border-left-style: none;">
+            <div class="container">
+                <div class="intro">
+                    <h2 class="text-center" data-bss-hover-animate="flash" style="font-family: Allerta, sans-serif;font-size: 25px;background: #000000;color: var(--white);opacity: 0.80;font-weight: normal;border-color: var(--blue);border-bottom-width: 1px;border-bottom-style: none;">OUR NEURAL NETWORK IS ABLE TO CLASSIFY A WIDE RANGE OF LUNG DISEASES LIKE..<br></h2>
+                </div>
+                <div class="row features">
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;border-right-width: 1px;border-right-color: rgb(0, 123, 255);">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Atelectasis<br></h3>
+                        <p class="description">Atelectasis is a complete or partial collapse of the entire lung or area (lobe) of the lung. It occurs when the tiny air sacs (alveoli) within the lung become deflated or possibly filled with alveolar fluid. It is one of the most common breathing complications after surgery.<br><br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Consolidation<br></h3>
+                        <p class="description">Lung consolidation occurs when the air that usually fills the small airways in your lungs is replaced with something else. Depending on the cause, the air may be replaced with : a fluid, such as pus, blood, or water; a solid, such as stomach contents or cells<br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Infiltration<br></h3>
+                        <p class="description">Interstitial lung disease describes a large group of disorders, most of which cause progressive scarring of lung tissue. The scarring associated with interstitial lung disease eventually affects your ability to breathe and get enough oxygen into your bloodstream.<br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Pneumothorax<br></h3>
+                        <p class="description">A pneumothorax is a collapsed lung. A pneumothorax occurs when air leaks into the space between your lung and chest wall. This air pushes on the outside of your lung and makes it collapse. Pneumothorax can be a complete lung collapse or a collapse of only a portion of the lung.<br><br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Pulmonary Edema<br></h3>
+                        <p class="description">Pulmonary edema is a condition caused by excess fluid in the lungs. This fluid collects in the numerous air sacs in the lungs, making it difficult to breathe.<br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Emphysema<br></h3>
+                        <p class="description">Emphysema is a lung condition that causes shortness of breath. In people with emphysema, the air sacs in the lungs (alveoli) are damaged. Over time, the inner walls of the air sacs weaken and rupture — creating larger air spaces instead of many small ones.&nbsp;<br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Fibrosis<br></h3>
+                        <p class="description">Pulmonary fibrosis is a lung disease that occurs when lung tissue becomes damaged and scarred. This thickened, stiff tissue makes it more difficult for your lungs to work properly. As pulmonary fibrosis worsens, you become progressively more short of breath.<br><br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Effusion<br></h3>
+                        <p class="description">Pleural effusion, sometimes referred to as “water on the lungs,” is the build-up of excess fluid between the layers of the pleura outside the lungs. The pleura are thin membranes that line the lungs and the inside of the chest cavity and act to lubricate and facilitate breathing.<br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Pneumonia<br></h3>
+                        <p class="description">Pneumonia is an infection of the lungs that may be caused by bacteria, viruses, or fungi. The infection causes the lungs' air sacs (alveoli) to become inflamed and fill up with fluid or pus. That can make it hard for the oxygen you breathe in to get into your bloodstream.&nbsp;<br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Pleural thickening<br></h3>
+                        <p class="description">Pleural thickening is a disease that can be caused by asbestos exposure. Asbestos fibers cause tissue in the lungs to scar, which leads to thickening of the pleural lining. Pleural thickening is incurable but treatable.<br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>COVID-19<br></h3>
+                        <p class="description"></p>
+                        <p class="description">Coronavirus disease 2019 (COVID-19) is a contagious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). Most develop mild to moderate symptoms of pneumonia, more than 50% lung involvement on imaging, and some patients suffer critical respiratory failure.<br><br></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;">
+                        <h3 class="name" style="border-bottom: 1px solid var(--blue) ;"><br>Nodule Mass<br></h3>
+                        <p class="description" style="font-style: normal;">A lung nodule (or mass) is a small abnormal area that is sometimes found during a CT scan of the chest. These scans are done for many reasons, such as part of lung cancer screening, or to check the lungs if you have symptoms.<br></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" id = 'asset2'>
+            <h1 data-bss-hover-animate="pulse" style="color: var(--white);font-size: 25px;text-align: center;margin-top: 5%;border-style: solid;border-top-style: none;border-right-style: none;border-bottom: 1px none var(--blue) ;border-left-style: none;"><strong>ABOUT US</strong></h1>
+            <p data-bss-hover-animate="pulse" style="color: var(--white);width: 40%;text-align: left;padding-left: 5%;margin: 2%;margin-top: 2%;"><br>Lungs play an important role in the normal functioning of our body. They are one of the most important organs that facilitate the flow of much needed oxygen into the body. Studies suggest that they are prone to many life-threatening diseases. We aim to propose Neural network architecture for the easy diagnosis of different kung disease. Our CNN classifier delivered an average accuracy of 96%. The robustness and efficiency of the model are ensured by means of data augmentation and input optimization. However, further exploration and use of better preprocessing techniques can surely be expected to uplift the performance of our model. <br><br></p>
+        </section>
+        <section data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" class="team-clean" style="background: #000000;border: 1px solid var(--blue) ;border-bottom-style: solid;">
+            <div class="container">
+                <div class="intro">
+                    <h2 class="text-center" data-bss-hover-animate="pulse" style="color: var(--white);">Team </h2>
+                    <p class="text-center" data-bss-hover-animate="pulse">Being Machine learning enthusiasts, our goal is to create ML algorithms to leverage diagnosis in healthcare domain.&nbsp;<br><br></p>
+                </div>
+                <div class="row people">
+                    <div class="col-md-6 col-lg-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;"><img class="rounded-circle" src="{{ url_for('static', filename = 'images/Screenshot_20210409-170135.png') }}" alt = 'Image'>
+                        <h3 class="name" style="color: var(--white);">Subhradeep Mitra</h3>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;"><img class="rounded-circle" src="{{ url_for('static', filename='images/Screenshot_20210409-170201.png') }}" alt = 'Image'>
+                        <h3 class="name" style="color: var(--white);">Omkar Biranje</h3>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 item" data-bss-hover-animate="pulse" style="border: 1px solid var(--blue) ;"><img class="rounded-circle" src = "{{ url_for('static', filename='images/Screenshot_20210409-170420.png') }}" alt='Image1'/>
+                        <h3 class="name" style="color: var(--white);">Anant Sutar</h3>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 item" data-bss-hover-animate="pulse" style="margin-left: 33.5%;border: 1px solid var(--blue) ;"><img class="rounded-circle" src="{{ url_for('static', filename='images/10474617225_e2f6f03d90_b.jpg') }}" alt = 'Image'>
+                        <h3 class="name" style="color: var(--white);">Shravani Nimbolkar</h3>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" class="footer-dark" style="background: linear-gradient(black 44%, #505e6c 100%), #000000;border: 1px solid var(--blue);opacity: 0.66;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>We Work On</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Web Development</a></li>
+                            <li><a href="#">AI/ML</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Team Members</h3>
+                        <ul>
+                            <li><a href="#">Anant Sutar</a></li>
+                            <li><a href="#">Shravani Nimbolkar</a></li>
+                            <li><a href="#">Subhradeep Mitra</a></li>
+                            <li><a href="#">Omkar Biranje</a></li>                        
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>CXRDiagnosis</h3>
+                        </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright" style="color: var(--white);opacity: 0.95;"><strong>CXRDiagnosis&nbsp;</strong>© 2021</p>
+            </div>
+        </footer>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{{ url_for('static', filename = 'js/script.min.js') }}"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

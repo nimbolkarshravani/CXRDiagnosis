@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CXR Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body style="background: #000000;border-style: none;">
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" style="opacity: 1;background: rgb(7,7,7);max-height: 10%;height: 70%;width: 100%;border-color: #222222;border-top-style: none;border-right-style: none;border-bottom: 1px solid var(--blue) ;border-left-style: none;">
+        <div class="container-fluid"><a class="navbar-brand" data-bss-hover-animate="flash" href="#" style="color: #1fbaf7;font-size: 25px;">CXRDiagnosis</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="color: var(--light);"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon" style="background: rgba(238,238,238,0);border-left-color: var(--light);color: var(--light);"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <!-- <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#" style="color: #8f8f8f;">First Item</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: #8f8f8f;">Second Item</a></li>
+                </ul><span class="navbar-text actions"> <a class="login" href="#" style="color: #8f8f8f;">Log In</a></span> -->
+            </div>
+        </div>
+    </nav>
+    <h1 align="center" style="color: #1fbaf7;; margin-top: 5%;">
+        REPORT
+    </h1>
+    <div class="aos-init aos-animate" style="font-size: large; color: #1fbaf7; width: 50%;height: 30%;margin-left: 25%;background: #000000;opacity: 0.83;padding: 2%;border: 0px none var(--blue);" id = 'results'>
+
+    </div>
+    <footer data-aos="fade-up" data-aos-duration="850" data-aos-delay="50" class="footer-dark" style="background: linear-gradient(black 44%, #505e6c 100%), #000000;border: 1px solid var(--blue);opacity: 0.66;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>We Work On</h3>
+                    <ul>
+                        <li><a href="#">Web design</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">AI/ML</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Team Members</h3>
+                    <ul>
+                        <li><a href="#">Anant Sutar</a></li>
+                        <li><a href="#">Shravani Nimbolkar</a></li>
+                        <li><a href="#">Subhradeep Mitra</a></li>
+                        <li><a href="#">Omkar Biranje</a></li>                        
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>CXRDiagnosis</h3>
+                    </div>
+                <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+            </div>
+            <p class="copyright" style="color: var(--white);opacity: 0.95;"><strong>CXRDiagnosis&nbsp;</strong>© 2021</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.min.js') }}"></script>
+    <script type="text/javascript">
+        AOS.init();
+        var receivedResults = {{all_disease_predcitions|safe}}
+        console.log( {{all_disease_predcitions|safe}} )
+        /*document.write(receivedResults);
+        console.log(receivedResults[0])
+        console.log(receivedResults[1])
+        console.log(receivedResults[2])
+        console.log(receivedResults[3])
+        console.log(receivedResults[0].length)*/
+        /*for(let i = 0; i < receivedResults.length; i++)
+        {
+            textNode = document.createTextNode();
+            textNode.value = receivedResults[i]
+        }*/
+
+        /*for(let i = 0, j = 1; j < receivedResults.length; i += 2, j += 2)
+        {
+            let disease = receivedResults[i];
+            let prediction = receivedResults[j];
+            let displayData = '';
+            if(prediction < 25)
+            {
+                console.log(prediction);
+                displayData += ('<div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width: 25% aria-valuenow=25 aria-valuemin="0" aria-valuemax="100"></div></div>');
+            }
+            else if(prediction < 50)
+            {
+                console.log(prediction);
+                displayData += ('<div class="progress"><div class="progress-bar bg-info" role="progressbar" style="width: ' + prediction +'% aria-valuenow=' + prediction + ' aria-valuemin="0" aria-valuemax="100"></div></div>');
+            }
+            else if(prediction < 75)
+            {
+                console.log(prediction);
+                displayData += ('<div class="progress"><div class="progress-bar bg-warning" role="progressbar" style="width: ' + prediction +'% aria-valuenow=' + prediction + ' aria-valuemin="0" aria-valuemax="100"></div></div>');
+            }
+            else
+            {
+                console.log(prediction);
+                displayData += ('<div class="progress"><div class="progress-bar bg-danger" role="progressbar" style="width: ' + prediction +'% aria-valuenow=' + prediction + ' aria-valuemin="0" aria-valuemax="100"></div></div>');                
+            }
+            let listNode = document.createElement("li");
+            listNode.innerHTML = displayData;
+            reportList.appendChild(listNode);
+        }*/
+        //let reportList = document.getElementById('resultList');
+        var str = '<ul>'
+        var progressBars = '<div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div>';
+        for (var i = 0; i < receivedResults.length - 1; i+=2){
+            let disease = receivedResults[i];
+            let prediction = receivedResults[i+1];
+            if(prediction < 25)
+            {
+                progressBars = '<div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width:' + prediction + '%" aria-valuenow="' + prediction + '" aria-valuemin="0" aria-valuemax="100"></div></div>';
+            }
+            else if(prediction < 50)
+            {
+                progressBars = '<div class="progress"><div class="progress-bar bg-info" role="progressbar" style="width:' + prediction + '%" aria-valuenow="' + prediction + '" aria-valuemin="0" aria-valuemax="100"></div></div>';
+            }
+            else if(prediction < 75)
+            {
+                progressBars = '<div class="progress"><div class="progress-bar bg-warning" role="progressbar" style="width:' + prediction + '%" aria-valuenow="' + prediction + '" aria-valuemin="0" aria-valuemax="100"></div></div>';
+            }
+            else
+            {
+                progressBars = '<div class="progress"><div class="progress-bar bg-danger" role="progressbar" style="width:' + prediction + '%" aria-valuenow="' + prediction + '" aria-valuemin="0" aria-valuemax="100"></div></div>';
+            }
+            str += '<li>'+ disease + ': ' + prediction + '%' + progressBars + '</li>';
+            str += '<br/>'; 
+        }; 
+
+        str += '</ul>';
+        document.getElementById("results").innerHTML = str;
+    </script>
+</body>
+</html>
